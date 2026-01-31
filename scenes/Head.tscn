@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cxmgvwj5fkiav" path="res://scenes/message.tscn" id="2_58grx"]
 [ext_resource type="Shader" uid="uid://dbnnbbgolxaxw" path="res://shaders/sky.gdshader" id="2_v2egs"]
 [ext_resource type="Script" uid="uid://drohjvhevrl35" path="res://scripts/chatbox.gd" id="3_ovqku"]
+[ext_resource type="PackedScene" uid="uid://mfjde18ra44l" path="res://assets/road__highway/road.gltf" id="5_ovqku"]
+[ext_resource type="PackedScene" uid="uid://couisl4ucxfid" path="res://assets/tree_animate/tree.gltf" id="6_icl4g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ovqku"]
 shader = ExtResource("2_v2egs")
@@ -31,7 +33,9 @@ background_mode = 2
 sky = SubResource("Sky_v2egs")
 ambient_light_source = 3
 ambient_light_sky_contribution = 0.75
-volumetric_fog_anisotropy = -0.9
+fog_light_energy = 1.4
+volumetric_fog_enabled = true
+volumetric_fog_anisotropy = 0.9
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6bdl"]
 bg_color = Color(0, 0, 0, 0.53333336)
@@ -46,11 +50,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.885, -0.057, 0)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1737741184]
 transform = Transform3D(1, 0, 0, 0, 0.90545774, 0.42443648, 0, -0.42443648, 0.90545774, 0, 24.999998, 34.635544)
 shadow_enabled = true
-shadow_opacity = 0.22
 shadow_blur = 7.955
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=724560770]
 environment = SubResource("Environment_ovqku")
+
+[node name="FlashLight" type="SpotLight3D" parent="." unique_id=2136057485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.795, 0.82, 4.203)
+light_color = Color(1, 1, 0.85490197, 1)
+light_energy = 4.665
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=912821234]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.097, 16.685)
@@ -77,14 +85,94 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r6bdl")
 [node name="MarginContainer" type="MarginContainer" parent="Chatbox/MarginContainer/PanelContainer" unique_id=1961024391]
 layout_mode = 2
 theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Messages" type="VBoxContainer" parent="Chatbox/MarginContainer/PanelContainer/MarginContainer" unique_id=819802172]
+[node name="VBoxContainer" type="VBoxContainer" parent="Chatbox/MarginContainer/PanelContainer/MarginContainer" unique_id=319313448]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Chatbox/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1418321484]
+layout_mode = 2
+theme_override_font_sizes/italics_font_size = 26
+bbcode_enabled = true
+text = "[i]Officer Bartley[/i]"
+fit_content = true
+
+[node name="Spacer" type="Control" parent="Chatbox/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1708623186]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Messages" type="VBoxContainer" parent="Chatbox/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=819802172]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 2
 
-[node name="Message" parent="Chatbox/MarginContainer/PanelContainer/MarginContainer/Messages" unique_id=2112623284 instance=ExtResource("2_58grx")]
+[node name="Message" parent="Chatbox/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Messages" unique_id=2112623284 instance=ExtResource("2_58grx")]
 visible = false
 layout_mode = 2
+
+[node name="Background" type="Node3D" parent="." unique_id=1609782142]
+
+[node name="Trees5" parent="Background" unique_id=1777812688 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 3.6762314, -1.61, -48.71243)
+
+[node name="Trees10" parent="Background" unique_id=618317593 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 14.232395, -1.61, -34.321384)
+
+[node name="Trees11" parent="Background" unique_id=1268157341 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 4.084, -1.61, -37.14008)
+
+[node name="Trees13" parent="Background" unique_id=1248294398 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 4.1199083, -1.61, -24.300495)
+
+[node name="Trees14" parent="Background" unique_id=215413053 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 16.455223, -1.61, -18.489258)
+
+[node name="Trees15" parent="Background" unique_id=791292889 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, 3.6762314, -1.61, -14.342003)
+
+[node name="Ground" parent="Background" unique_id=135031427 instance=ExtResource("5_ovqku")]
+transform = Transform3D(-0.7749446, 0, -0.63202906, 0, 1, 0, 0.63202906, 0, -0.7749446, -35.266, -1.565, -79.763)
+
+[node name="Trees16" parent="Background" unique_id=904357471 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.13727455, 0, -0.027489966, 0, 0.14, 0, 0.027489966, 0, 0.13727455, 13.753375, -1.61, -84.065636)
+
+[node name="Trees17" parent="Background" unique_id=264001477 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.13727455, 0, -0.027489966, 0, 0.14, 0, 0.027489966, 0, 0.13727455, 25.817566, -1.61, -73.79849)
+
+[node name="Trees20" parent="Background" unique_id=1941641841 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.13727455, 0, -0.027489966, 0, 0.14, 0, 0.027489966, 0, 0.13727455, 8.8769865, -1.61, -61.79145)
+
+[node name="Trees21" parent="Background" unique_id=891852832 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.13727455, 0, -0.027489966, 0, 0.14, 0, 0.027489966, 0, 0.13727455, 21.278255, -1.61, -67.88197)
+
+[node name="Trees25" parent="Background" unique_id=447896596 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.13727455, 0, -0.027489966, 0, 0.14, 0, 0.027489966, 0, 0.13727455, 16.401867, -1.61, -45.607788)
+
+[node name="Trees28" parent="Background" unique_id=1352706464 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.13727455, 0, -0.027489966, 0, 0.14, 0, 0.027489966, 0, 0.13727455, 4.5185738, -1.61, -37.76764)
+
+[node name="Trees29" parent="Background" unique_id=2086109853 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.13727455, 0, -0.027489966, 0, 0.14, 0, 0.027489966, 0, 0.13727455, 15.472674, -1.61, -29.647406)
+
+[node name="Trees30" parent="Background" unique_id=838716225 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.13727455, 0, -0.027489966, 0, 0.14, 0, 0.027489966, 0, 0.13727455, 2.1281166, -1.61, -28.090132)
+
+[node name="Trees32" parent="Background" unique_id=1774519835 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.11742851, 0, 0.07622692, 0, 0.14, 0, -0.07622692, 0, 0.11742851, 7.971653, -1.61, -61.23799)
+
+[node name="Trees33" parent="Background" unique_id=930327482 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.11742851, 0, 0.07622692, 0, 0.14, 0, -0.07622692, 0, 0.11742851, -0.81209373, -1.61, -49.406734)
+
+[node name="Trees38" parent="Background" unique_id=436671366 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.11742851, 0, 0.07622692, 0, 0.14, 0, -0.07622692, 0, 0.11742851, 15.87776, -1.61, -43.083485)
+
+[node name="Trees40" parent="Background" unique_id=2114707950 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.11742851, 0, 0.07622692, 0, 0.14, 0, -0.07622692, 0, 0.11742851, 20.927795, -1.61, -34.488976)
+
+[node name="Trees41" parent="Background" unique_id=1427831755 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.11742851, 0, 0.07622692, 0, 0.14, 0, -0.07622692, 0, 0.11742851, 10.8808565, -1.61, -31.327652)
+
+[node name="Trees43" parent="Background" unique_id=1584084128 instance=ExtResource("6_icl4g")]
+transform = Transform3D(0.11742851, 0, 0.07622692, 0, 0.14, 0, -0.07622692, 0, 0.11742851, 17.901848, -1.61, -20.577677)
