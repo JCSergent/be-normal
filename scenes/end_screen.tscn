@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bcgqbmewkrk7w"]
+
+[ext_resource type="Script" uid="uid://dmh0g1te51fhs" path="res://scripts/end_screen.gd" id="1_6e1uj"]
+[ext_resource type="Texture2D" uid="uid://bs01tg3vliye2" path="res://assets/images/game_over_text.png" id="1_kq7ac"]
+
+[node name="EndScreen" type="Control" unique_id=607470978]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6e1uj")
+
+[node name="GameOverText" type="Sprite2D" parent="." unique_id=590219823]
+position = Vector2(552, 320)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_kq7ac")
