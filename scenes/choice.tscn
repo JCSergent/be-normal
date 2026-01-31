@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://e5jijhyoto3v"]
+
+[ext_resource type="Script" uid="uid://rlj2gn7g5rjo" path="res://scripts/choice.gd" id="1_ycxmd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pffde"]
+bg_color = Color(0, 1, 0.20392157, 0.8352941)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="PanelContainer" type="PanelContainer" unique_id=1491600633]
+size_flags_horizontal = 3
+script = ExtResource("1_ycxmd")
+
+[node name="Panel" type="Panel" parent="." unique_id=1515147106]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pffde")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=623410592]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ChoiceLabel" type="Label" parent="MarginContainer" unique_id=190315025]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Yes..."
+autowrap_mode = 2

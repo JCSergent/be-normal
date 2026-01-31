@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://cxmgvwj5fkiav"]
+
+[ext_resource type="Script" uid="uid://crn0gxhxfe7q1" path="res://scripts/message.gd" id="1_11qlq"]
+[ext_resource type="PackedScene" uid="uid://e5jijhyoto3v" path="res://scenes/choice.tscn" id="2_x5w8s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3og1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pffde"]
+bg_color = Color(0, 1, 0.20392157, 0.8352941)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Control" type="VBoxContainer" unique_id=534664335]
+offset_right = 310.0
+offset_bottom = 115.0
+theme_override_constants/separation = 8
+script = ExtResource("1_11qlq")
+
+[node name="Message" type="PanelContainer" parent="." unique_id=2112623284]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Message" unique_id=1066503690]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k3og1")
+
+[node name="MarginContainer" type="MarginContainer" parent="Message" unique_id=1795943035]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 12
+
+[node name="MessageLabel" type="Label" parent="Message/MarginContainer" unique_id=259486785]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Hey... Are you listening?"
+autowrap_mode = 2
+
+[node name="Choices" type="HBoxContainer" parent="." unique_id=436213848]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="PanelContainer" parent="Choices" unique_id=1491600633 instance=ExtResource("2_x5w8s")]
+visible = false
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="Choices" unique_id=575306178]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="Panel" parent="Choices/PanelContainer2" unique_id=1804852295]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pffde")
+
+[node name="MarginContainer" type="MarginContainer" parent="Choices/PanelContainer2" unique_id=1895779830]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Choices/PanelContainer2/MarginContainer" unique_id=1861646251]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "No...."
+autowrap_mode = 2

@@ -1,45 +1,90 @@
 [gd_scene format=3 uid="uid://bhj50rygm7fxl"]
 
 [ext_resource type="PackedScene" uid="uid://4m71n2ngtswe" path="res://scenes/faceguy.tscn" id="1_k3og1"]
+[ext_resource type="PackedScene" uid="uid://cxmgvwj5fkiav" path="res://scenes/message.tscn" id="2_58grx"]
+[ext_resource type="Shader" uid="uid://dbnnbbgolxaxw" path="res://shaders/sky.gdshader" id="2_v2egs"]
+[ext_resource type="Script" uid="uid://drohjvhevrl35" path="res://scripts/chatbox.gd" id="3_ovqku"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovqku"]
+shader = ExtResource("2_v2egs")
+shader_parameter/sky_top_color = Color(0, 0.7019608, 0.78431374, 1)
+shader_parameter/sky_horizon_color = Color(0.57609594, 0.57273734, 0.99999696, 1)
+shader_parameter/sky_curve = 1.0
+shader_parameter/sky_energy = 1.0
+shader_parameter/sky_cover_modulate = Color(0.5764706, 0.57254905, 1, 1)
+shader_parameter/ground_bottom_color = Color(0, 0, 0, 1)
+shader_parameter/ground_horizon_color = Color(0.5764706, 0.57254905, 1, 1)
+shader_parameter/ground_curve = 0.02
+shader_parameter/ground_energy = 1.0
+shader_parameter/sun_angle_max = 30.0
+shader_parameter/sun_curve = 0.0
+shader_parameter/cloud_direction = Vector2(0, 0)
+shader_parameter/cloud_direction2 = Vector2(0, 0)
+shader_parameter/cloud_scale = Vector2(0, 0)
+shader_parameter/cloud_distance = 0.0
+
+[sub_resource type="Sky" id="Sky_v2egs"]
+sky_material = SubResource("ShaderMaterial_ovqku")
+
+[sub_resource type="Environment" id="Environment_ovqku"]
+background_mode = 2
+sky = SubResource("Sky_v2egs")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.75
+volumetric_fog_anisotropy = -0.9
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6bdl"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0, 0, 0, 0.53333336)
+border_width_left = 2
+border_width_right = 2
 
 [node name="Head" type="Node3D" unique_id=872376213]
 
 [node name="faceguy2" parent="." unique_id=1736390383 instance=ExtResource("1_k3og1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.885, -0.057, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1737741184]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1378582, 3.7828815)
+transform = Transform3D(1, 0, 0, 0, 0.90545774, 0.42443648, 0, -0.42443648, 0.90545774, 0, 24.999998, 34.635544)
+shadow_enabled = true
+shadow_opacity = 0.22
+shadow_blur = 7.955
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=724560770]
+environment = SubResource("Environment_ovqku")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=912821234]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.097, 16.685)
 fov = 10.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1450342244]
+[node name="Chatbox" type="HBoxContainer" parent="." unique_id=37296964]
 offset_right = 1152.0
 offset_bottom = 649.0
 alignment = 2
+script = ExtResource("3_ovqku")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1737437026]
+[node name="MarginContainer" type="MarginContainer" parent="Chatbox" unique_id=1836836800]
+layout_mode = 2
+theme_override_constants/margin_right = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="Chatbox/MarginContainer" unique_id=868264021]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=868264021]
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="VBoxContainer/PanelContainer" unique_id=700431663]
+[node name="Panel" type="Panel" parent="Chatbox/MarginContainer/PanelContainer" unique_id=700431663]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_r6bdl")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer" unique_id=1961024391]
+[node name="MarginContainer" type="MarginContainer" parent="Chatbox/MarginContainer/PanelContainer" unique_id=1961024391]
 layout_mode = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 80
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer" unique_id=1052193197]
+[node name="Messages" type="VBoxContainer" parent="Chatbox/MarginContainer/PanelContainer/MarginContainer" unique_id=819802172]
+unique_name_in_owner = true
 layout_mode = 2
-text = " Hello feiwafndskalfj aioe wjfiwel ajf klwe"
+alignment = 2
+
+[node name="Message" parent="Chatbox/MarginContainer/PanelContainer/MarginContainer/Messages" unique_id=2112623284 instance=ExtResource("2_58grx")]
+visible = false
+layout_mode = 2
