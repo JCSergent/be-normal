@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://db7xtrdwepf0g"]
+
+[ext_resource type="Script" uid="uid://7n58py26o3bi" path="res://scripts/title_screen.gd" id="1_s4lrb"]
+[ext_resource type="Texture2D" uid="uid://crgfd8pm87o0y" path="res://images/title_text.png" id="1_sa3yf"]
+[ext_resource type="Texture2D" uid="uid://mrledutl7ejf" path="res://images/title_press_start.png" id="2_s4lrb"]
+
+[node name="TitleScreen" type="Control" unique_id=1217799707]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s4lrb")
+
+[node name="TitleText" type="Sprite2D" parent="." unique_id=1748781060]
+position = Vector2(568, 224)
+scale = Vector2(2, 2)
+texture = ExtResource("1_sa3yf")
+
+[node name="TitlePressStartText" type="Sprite2D" parent="." unique_id=1680917144]
+position = Vector2(584, 392)
+scale = Vector2(2, 2)
+texture = ExtResource("2_s4lrb")
