@@ -2,4 +2,4 @@
 .godot/
 /android/
 # editable versions of images
-/images_src
+/assets/images_src
