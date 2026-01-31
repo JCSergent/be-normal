@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://c0a2nmdber4f4"]
+
+[ext_resource type="Script" uid="uid://crwmvm4evlws7" path="res://scripts/suspicion_bar.gd" id="1_hrc5u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrc5u"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qls4"]
+bg_color = Color(0.0912, 0.6150933, 0.76, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[node name="SuspicionBar" type="Control" unique_id=1764335811]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(1, 0.98333335)
+script = ExtResource("1_hrc5u")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=280457418]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 0
+offset_right = 688.0
+offset_bottom = 20.0
+scale = Vector2(0.99392533, 1.5029423)
+theme_override_styles/background = SubResource("StyleBoxFlat_hrc5u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2qls4")
+step = 1.0
+value = 80.0
+show_percentage = false
