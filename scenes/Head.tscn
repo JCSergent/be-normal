@@ -1,3 +1,45 @@
 [gd_scene format=3 uid="uid://bhj50rygm7fxl"]
 
+[ext_resource type="PackedScene" uid="uid://4m71n2ngtswe" path="res://scenes/faceguy.tscn" id="1_k3og1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6bdl"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="Head" type="Node3D" unique_id=872376213]
+
+[node name="faceguy2" parent="." unique_id=1736390383 instance=ExtResource("1_k3og1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1737741184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1378582, 3.7828815)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=912821234]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.097, 16.685)
+fov = 10.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1450342244]
+offset_right = 1152.0
+offset_bottom = 649.0
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1737437026]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=868264021]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/PanelContainer" unique_id=700431663]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_r6bdl")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer" unique_id=1961024391]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 80
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer" unique_id=1052193197]
+layout_mode = 2
+text = " Hello feiwafndskalfj aioe wjfiwel ajf klwe"
