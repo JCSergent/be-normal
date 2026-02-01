@@ -14,7 +14,7 @@ func _ready() -> void:
     camera.position.x += CAMERA_START_OFFSET
 
 func _process(_delta: float) -> void:
-    if Input.is_action_just_pressed("sony_cross") or Input.is_action_just_pressed("sony_start"): #X button
+    if not game_start and Input.is_action_just_pressed("sony_cross") or Input.is_action_just_pressed("sony_start"): #X button
         game_start = true
         start_ui.visible = false
 
