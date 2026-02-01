@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="BeNormal"
-run/main_scene="uid://db7xtrdwepf0g"
+run/main_scene="uid://bhj50rygm7fxl"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 dialog="*uid://bmwbn1hq38kfd"
-signalbus="*uid://dy3tyxk3pnill"
+SignalBus="*uid://dy3tyxk3pnill"
 
 [filesystem]
 

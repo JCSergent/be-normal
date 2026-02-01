@@ -27,10 +27,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_k3og1")
 
 [node name="MarginContainer" type="MarginContainer" parent="Message" unique_id=1795943035]
 layout_mode = 2
-theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Message/MarginContainer" unique_id=928878212]
 layout_mode = 2
@@ -42,17 +40,12 @@ bbcode_enabled = true
 text = "[i]Officer Bartley[/i]"
 fit_content = true
 
-[node name="Label" type="Label" parent="Message/MarginContainer/VBoxContainer" unique_id=461901623]
-visible = false
-layout_mode = 2
-text = "Test"
-
 [node name="MessageLabel" type="Label" parent="Message/MarginContainer/VBoxContainer" unique_id=259486785]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 20
 text = "Hey... Are you listening?"
 autowrap_mode = 2
 
@@ -60,3 +53,12 @@ autowrap_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
+
+[node name="FinalChoice" type="RichTextLabel" parent="." unique_id=1207031836]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/default_color = Color(0.5058824, 1, 0.5019608, 0.8352941)
+bbcode_enabled = true
+text = "[i]Blink...[/i]"
+fit_content = true
