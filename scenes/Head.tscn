@@ -34,7 +34,6 @@ sky = SubResource("Sky_v2egs")
 ambient_light_source = 3
 ambient_light_sky_contribution = 0.75
 fog_light_energy = 1.4
-volumetric_fog_enabled = true
 volumetric_fog_anisotropy = 0.9
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6bdl"]
@@ -49,6 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.885, -0.057, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1737741184]
 transform = Transform3D(1, 0, 0, 0, 0.90545774, 0.42443648, 0, -0.42443648, 0.90545774, 0, 24.999998, 34.635544)
+light_volumetric_fog_energy = 0.5
 shadow_enabled = true
 shadow_blur = 7.955
 
@@ -57,6 +57,7 @@ environment = SubResource("Environment_ovqku")
 
 [node name="FlashLight" type="SpotLight3D" parent="." unique_id=2136057485]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.795, 0.82, 4.203)
+visible = false
 light_color = Color(1, 1, 0.85490197, 1)
 light_energy = 4.665
 
@@ -105,7 +106,9 @@ size_flags_vertical = 3
 
 [node name="Messages" type="VBoxContainer" parent="Chatbox/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=819802172]
 unique_name_in_owner = true
+clip_contents = true
 layout_mode = 2
+theme_override_constants/separation = 16
 alignment = 2
 
 [node name="Message" parent="Chatbox/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Messages" unique_id=2112623284 instance=ExtResource("2_58grx")]

@@ -36,6 +36,7 @@ visible = false
 layout_mode = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=833599634]
+visible = false
 layout_mode = 2
 value = 50.0
 show_percentage = false

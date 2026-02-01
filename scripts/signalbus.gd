@@ -1,4 +1,5 @@
 extends Node
 
 
-# signal face_state e
+signal face_state
+signal next_dialog
