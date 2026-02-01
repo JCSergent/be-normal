@@ -4,4 +4,4 @@
 # editable versions of images
 /assets/images_src
 
-.exports/
+exports/
