@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://bm4klxhe6nic5" path="res://scenes/faceguy_2.tscn" id="1_ca5y4"]
 [ext_resource type="Script" uid="uid://d4du2kx14x56x" path="res://scripts/main.gd" id="1_uy36a"]
 [ext_resource type="PackedScene" uid="uid://cxmgvwj5fkiav" path="res://scenes/message.tscn" id="2_58grx"]
-[ext_resource type="Shader" uid="uid://dbnnbbgolxaxw" path="res://shaders/sky.gdshader" id="2_v2egs"]
 [ext_resource type="Shader" uid="uid://2llsm125crfa" path="res://shaders/psx.gdshader" id="3_inqew"]
 [ext_resource type="Script" uid="uid://drohjvhevrl35" path="res://scripts/chatbox.gd" id="3_ovqku"]
 [ext_resource type="PackedScene" uid="uid://duipdu2yw636o" path="res://assets/old_flashlight_2.0/scene.gltf" id="3_qtmk6"]
@@ -14,42 +13,25 @@
 [ext_resource type="StyleBox" uid="uid://dcs5hpee25u0w" path="res://assets/red_progress_front.tres" id="8_ca5y4"]
 [ext_resource type="Texture2D" uid="uid://crgfd8pm87o0y" path="res://assets/images/title_text.png" id="13_6e827"]
 [ext_resource type="Texture2D" uid="uid://mrledutl7ejf" path="res://assets/images/title_press_start.png" id="14_qqyuk"]
-[ext_resource type="Texture2D" uid="uid://dmgyd2ayr6yc7" path="res://assets/images/title_text2.png" id="15_qqyuk"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovqku"]
-shader = ExtResource("2_v2egs")
-shader_parameter/sky_top_color = Color(0, 0.7019608, 0.78431374, 1)
-shader_parameter/sky_horizon_color = Color(0.57609594, 0.57273734, 0.99999696, 1)
-shader_parameter/sky_curve = 1.0
-shader_parameter/sky_energy = 1.0
-shader_parameter/sky_cover_modulate = Color(0.5764706, 0.57254905, 1, 1)
-shader_parameter/ground_bottom_color = Color(0, 0, 0, 1)
-shader_parameter/ground_horizon_color = Color(0.5764706, 0.57254905, 1, 1)
-shader_parameter/ground_curve = 0.02
-shader_parameter/ground_energy = 1.0
-shader_parameter/sun_angle_max = 30.0
-shader_parameter/sun_curve = 0.0
-shader_parameter/cloud_direction = Vector2(0, 0)
-shader_parameter/cloud_direction2 = Vector2(0, 0)
-shader_parameter/cloud_scale = Vector2(0, 0)
-shader_parameter/cloud_distance = 0.0
+[ext_resource type="Texture2D" uid="uid://dlajk4yv01j67" path="res://assets/images/title_text2.png" id="15_qqyuk"]
+[ext_resource type="AudioStream" uid="uid://7mgnqfruwetu" path="res://assets/facemusic.mp3" id="16_l6lsl"]
 
 [sub_resource type="Sky" id="Sky_v2egs"]
-sky_material = SubResource("ShaderMaterial_ovqku")
 
 [sub_resource type="Environment" id="Environment_ovqku"]
 background_mode = 2
 sky = SubResource("Sky_v2egs")
 ambient_light_source = 3
 ambient_light_sky_contribution = 0.75
-fog_light_energy = 1.4
+fog_enabled = true
+fog_light_color = Color(0.43039113, 0.46450996, 0.5175889, 1)
 volumetric_fog_anisotropy = 0.9
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qtmk6"]
 render_priority = 0
 shader = ExtResource("3_inqew")
 shader_parameter/enable_fog = true
-shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/fog_color = Color(0.40298524, 0.4029852, 0.40298522, 1)
 shader_parameter/noise_color = Color(0, 0, 0, 1)
 shader_parameter/fog_distance = 100.0
 shader_parameter/fog_fade_range = 50.0
@@ -58,7 +40,7 @@ shader_parameter/noise_time_fac = 4.0
 shader_parameter/enable_color_limitation = true
 shader_parameter/color_levels = 32
 shader_parameter/enable_dithering = true
-shader_parameter/dither_strength = 0.3
+shader_parameter/dither_strength = 0.50000002375
 
 [sub_resource type="QuadMesh" id="QuadMesh_jgqlc"]
 material = SubResource("ShaderMaterial_qtmk6")
@@ -120,7 +102,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.097, 16.685)
 fov = 10.0
 
 [node name="PS1 Shader" type="MeshInstance3D" parent="Camera" unique_id=96862780]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2869587)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.8103065)
 mesh = SubResource("QuadMesh_jgqlc")
 
 [node name="Chatbox" type="HBoxContainer" parent="." unique_id=37296964]
@@ -336,3 +318,8 @@ texture = ExtResource("14_qqyuk")
 position = Vector2(256, 112)
 scale = Vector2(2, 2)
 texture = ExtResource("15_qqyuk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=249014655]
+stream = ExtResource("16_l6lsl")
+autoplay = true
+parameters/looping = false

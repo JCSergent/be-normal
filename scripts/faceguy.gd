@@ -172,8 +172,8 @@ func _process(delta: float) -> void:
     is_bliss = max(0, is_bliss)
 
     var is_angry = 0.0
-    if is_mouth_open and is_frowning: is_angry += 0.1
-    if is_head_down: is_angry += 0.1
+    if is_frowning: is_angry += 0.1
+    if is_head_down: is_angry += 0.05
 
     var is_flirty = 0.0
     if is_smiling:
