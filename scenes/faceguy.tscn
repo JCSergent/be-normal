@@ -12,3 +12,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.712213)
 
 [node name="alguien_nuevo-male_generic" parent="alguien_nuevo/Skeleton3D" index="0" unique_id=621300876]
 unique_name_in_owner = true
+blend_shapes/head_shake_right = -0.09464

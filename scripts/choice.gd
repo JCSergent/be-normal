@@ -3,6 +3,7 @@ extends Control
 
 @export var choice_text: String
 @onready var choice_label: Label = %ChoiceLabel
+@onready var progress_bar: ProgressBar = %ProgressBar
 
 var next_id: String
 var requirements: Array = []
@@ -16,17 +17,23 @@ func init(choice: Dictionary) -> void:
     next_id = choice.next_id
     if choice.has("requirements"):
         for requirement in choice.requirements:
-            requirements.push_front(requirement.duplicate())
+            var requirement_dup = requirement.duplicate()
+            requirement_dup.get_or_add("progress", 0.0)
+            requirements.push_front(requirement_dup)
 
 func _on_face_update(face_state: Dictionary):
     for requirement in requirements:
         var face_action = face_state[requirement.face_state]
         if typeof(face_action) == TYPE_BOOL and face_action:
-            requirement.amount -= 1
-            if requirement.amount <= 0:
+            requirement.progress += 1
+            if requirement.amount <= requirement.progress:
                 SignalBus.next_dialog.emit(next_id, choice_text)
-        if typeof(face_action) == TYPE_FLOAT and face_action > 0.0:
-            requirement.amount -= face_action
-            if requirement.amount <= 0:
+        elif typeof(face_action) == TYPE_FLOAT and face_action > 0.0:
+            requirement.progress += face_action
+            if requirement.amount <= requirement.progress:
                 SignalBus.next_dialog.emit(next_id, choice_text)
+        else:
+            if requirement.progress > 0.0:
+                requirement.progress -= 0.01
+        progress_bar.value = requirement.progress / requirement.amount
     

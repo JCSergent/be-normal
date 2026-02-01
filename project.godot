@@ -20,10 +20,6 @@ config/icon="res://icon.svg"
 dialog="*uid://bmwbn1hq38kfd"
 SignalBus="*uid://dy3tyxk3pnill"
 
-[display]
-
-window/size/mode=3
-
 [filesystem]
 
 import/blender/enabled=false

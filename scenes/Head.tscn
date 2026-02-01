@@ -1,11 +1,19 @@
 [gd_scene format=3 uid="uid://bhj50rygm7fxl"]
 
-[ext_resource type="PackedScene" uid="uid://4m71n2ngtswe" path="res://scenes/faceguy.tscn" id="1_k3og1"]
+[ext_resource type="PackedScene" uid="uid://bm4klxhe6nic5" path="res://scenes/faceguy_2.tscn" id="1_ca5y4"]
+[ext_resource type="Script" uid="uid://d4du2kx14x56x" path="res://scripts/main.gd" id="1_uy36a"]
 [ext_resource type="PackedScene" uid="uid://cxmgvwj5fkiav" path="res://scenes/message.tscn" id="2_58grx"]
 [ext_resource type="Shader" uid="uid://dbnnbbgolxaxw" path="res://shaders/sky.gdshader" id="2_v2egs"]
+[ext_resource type="Shader" uid="uid://2llsm125crfa" path="res://shaders/psx.gdshader" id="3_inqew"]
 [ext_resource type="Script" uid="uid://drohjvhevrl35" path="res://scripts/chatbox.gd" id="3_ovqku"]
+[ext_resource type="PackedScene" uid="uid://duipdu2yw636o" path="res://assets/old_flashlight_2.0/scene.gltf" id="3_qtmk6"]
 [ext_resource type="PackedScene" uid="uid://mfjde18ra44l" path="res://assets/road__highway/road.gltf" id="5_ovqku"]
 [ext_resource type="PackedScene" uid="uid://couisl4ucxfid" path="res://assets/tree_animate/tree.gltf" id="6_icl4g"]
+[ext_resource type="Texture2D" uid="uid://bw4kuck1wlg2x" path="res://assets/magnifying-glass.png" id="6_qtmk6"]
+[ext_resource type="StyleBox" uid="uid://p0wgocg7kqx2" path="res://assets/gray_progress_back.tres" id="7_x4pcr"]
+[ext_resource type="StyleBox" uid="uid://dcs5hpee25u0w" path="res://assets/red_progress_front.tres" id="8_ca5y4"]
+[ext_resource type="Texture2D" uid="uid://crgfd8pm87o0y" path="res://assets/images/title_text.png" id="13_6e827"]
+[ext_resource type="Texture2D" uid="uid://mrledutl7ejf" path="res://assets/images/title_press_start.png" id="14_qqyuk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ovqku"]
 shader = ExtResource("2_v2egs")
@@ -36,49 +44,145 @@ ambient_light_sky_contribution = 0.75
 fog_light_energy = 1.4
 volumetric_fog_anisotropy = 0.9
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6bdl"]
-bg_color = Color(0, 0, 0, 0.53333336)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qtmk6"]
+render_priority = 0
+shader = ExtResource("3_inqew")
+shader_parameter/enable_fog = true
+shader_parameter/fog_color = Color(0.30987793, 0.30987793, 0.3098779, 1)
+shader_parameter/noise_color = Color(0, 0, 0, 1)
+shader_parameter/fog_distance = 100.0
+shader_parameter/fog_fade_range = 50.0
+shader_parameter/enable_noise = true
+shader_parameter/noise_time_fac = 4.0
+shader_parameter/enable_color_limitation = true
+shader_parameter/color_levels = 32
+shader_parameter/enable_dithering = true
+shader_parameter/dither_strength = 0.50000002375
+
+[sub_resource type="QuadMesh" id="QuadMesh_jgqlc"]
+material = SubResource("ShaderMaterial_qtmk6")
+size = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qtmk6"]
 border_width_left = 2
+border_width_top = 2
 border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 15.0
+expand_margin_top = 15.0
+expand_margin_right = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6bdl"]
+bg_color = Color(0, 0, 0, 0.73333335)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.6, 0.6, 1)
 
 [node name="Head" type="Node3D" unique_id=872376213]
+script = ExtResource("1_uy36a")
 
-[node name="faceguy2" parent="." unique_id=1736390383 instance=ExtResource("1_k3og1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.885, -0.057, 0)
+[node name="faceguy_2" parent="." unique_id=248627134 instance=ExtResource("1_ca5y4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.005, -14.763, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1737741184]
 transform = Transform3D(1, 0, 0, 0, 0.90545774, 0.42443648, 0, -0.42443648, 0.90545774, 0, 24.999998, 34.635544)
-light_volumetric_fog_energy = 0.5
+light_energy = 0.5
 shadow_enabled = true
 shadow_blur = 7.955
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=724560770]
 environment = SubResource("Environment_ovqku")
 
-[node name="FlashLight" type="SpotLight3D" parent="." unique_id=2136057485]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.795, 0.82, 4.203)
+[node name="Flashlight" parent="." unique_id=96509291 instance=ExtResource("3_qtmk6")]
+unique_name_in_owner = true
+transform = Transform3D(-0.0009968395, 0, 0.004899624, 0, 0.005, 0, -0.004899624, 0, -0.0009968395, 0.239, -0.5, 7.232)
+
+[node name="Flashlightlight" type="SpotLight3D" parent="Flashlight" unique_id=2136057485]
+unique_name_in_owner = true
+transform = Transform3D(-12.446614, 0, -199.61235, 0, 200, 0, 199.61235, 0, -12.446614, 387.3474, 0, 24.152634)
 visible = false
 light_color = Color(1, 1, 0.85490197, 1)
-light_energy = 4.665
+light_energy = 2.0
+spot_range = 10.0
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=912821234]
+[node name="Camera" type="Camera3D" parent="." unique_id=912821234]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.097, 16.685)
 fov = 10.0
 
+[node name="PS1 Shader" type="MeshInstance3D" parent="Camera" unique_id=96862780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2869587)
+mesh = SubResource("QuadMesh_jgqlc")
+
 [node name="Chatbox" type="HBoxContainer" parent="." unique_id=37296964]
-anchors_preset = 11
-anchor_left = 1.0
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -183.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
-alignment = 2
 script = ExtResource("3_ovqku")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Chatbox" unique_id=2053594028]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="Control" type="Control" parent="Chatbox/VBoxContainer" unique_id=2043122359]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Chatbox/VBoxContainer" unique_id=315226272]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Chatbox/VBoxContainer/MarginContainer" unique_id=553070814]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Chatbox/VBoxContainer/MarginContainer/HBoxContainer" unique_id=561447972]
+z_index = 1
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Chatbox/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=431128862]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qtmk6")
+
+[node name="TextureRect" type="TextureRect" parent="Chatbox/VBoxContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1251370305]
+layout_mode = 2
+texture = ExtResource("6_qtmk6")
+expand_mode = 2
+flip_h = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Chatbox/VBoxContainer/MarginContainer/HBoxContainer" unique_id=39975026]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SuspicionBar" type="ProgressBar" parent="Chatbox/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer" unique_id=315399502]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/background = ExtResource("7_x4pcr")
+theme_override_styles/fill = ExtResource("8_ca5y4")
+step = 1.0
+show_percentage = false
 
 [node name="MarginContainer" type="MarginContainer" parent="Chatbox" unique_id=1836836800]
 layout_mode = 2
-theme_override_constants/margin_right = 10
+size_flags_horizontal = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="Chatbox/MarginContainer" unique_id=868264021]
 layout_mode = 2
@@ -90,17 +194,18 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r6bdl")
 
 [node name="MarginContainer" type="MarginContainer" parent="Chatbox/MarginContainer/PanelContainer" unique_id=1961024391]
 layout_mode = 2
-theme_override_constants/margin_left = 20
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Chatbox/MarginContainer/PanelContainer/MarginContainer" unique_id=319313448]
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Chatbox/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1418321484]
+visible = false
 layout_mode = 2
-theme_override_font_sizes/italics_font_size = 26
+theme_override_font_sizes/italics_font_size = 40
 bbcode_enabled = true
 text = "[i]Officer Bartley[/i]"
 fit_content = true
@@ -119,6 +224,14 @@ alignment = 2
 [node name="Message" parent="Chatbox/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Messages" unique_id=2112623284 instance=ExtResource("2_58grx")]
 visible = false
 layout_mode = 2
+
+[node name="TimeRemaining" type="ProgressBar" parent="Chatbox/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1637762681]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/background = ExtResource("7_x4pcr")
+theme_override_styles/fill = ExtResource("8_ca5y4")
+show_percentage = false
 
 [node name="Background" type="Node3D" parent="." unique_id=1609782142]
 
@@ -184,3 +297,35 @@ transform = Transform3D(0.11742851, 0, 0.07622692, 0, 0.14, 0, -0.07622692, 0, 0
 
 [node name="Trees43" parent="Background" unique_id=1584084128 instance=ExtResource("6_icl4g")]
 transform = Transform3D(0.11742851, 0, 0.07622692, 0, 0.14, 0, -0.07622692, 0, 0.11742851, 17.901848, -1.61, -20.577677)
+
+[node name="StartUI" type="HBoxContainer" parent="." unique_id=1521720279]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="StartUI" unique_id=1166415989]
+visible = false
+layout_mode = 2
+texture = ExtResource("13_6e827")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartUI" unique_id=1473476032]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="StartUI/VBoxContainer" unique_id=700192608]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Skin Suit"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="StartUI/VBoxContainer" unique_id=1851799698]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="StartUI/VBoxContainer" unique_id=309326265]
+layout_mode = 2
+texture = ExtResource("14_qqyuk")

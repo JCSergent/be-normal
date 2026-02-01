@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bm4klxhe6nic5"]
+
+[ext_resource type="PackedScene" uid="uid://dh2yxkvjaqwjx" path="res://assets/faceguy_2.glb" id="1_cpgke"]
+[ext_resource type="Script" uid="uid://c657li6eqapfj" path="res://scripts/faceguy.gd" id="2_wohjn"]
+
+[node name="faceguy_2" unique_id=248627134 instance=ExtResource("1_cpgke")]
+script = ExtResource("2_wohjn")
+
+[node name="alguien_nuevo-eyelashes01" parent="alguien_nuevo/Skeleton3D" parent_id_path=PackedInt32Array(1666501892) index="0" unique_id=535437680]
+visible = false
+
+[node name="alguien_nuevo-male_generic" parent="alguien_nuevo/Skeleton3D" parent_id_path=PackedInt32Array(1666501892) index="1" unique_id=2044355762]
+unique_name_in_owner = true
