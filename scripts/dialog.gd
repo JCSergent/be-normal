@@ -169,7 +169,7 @@ const INTRO = {
     "win_3": {
         "wait": 2,
         "text": "Thanks for playing!",
-        "next_id": ""
+        "next_id": "win_screen"
     },
 }
 
