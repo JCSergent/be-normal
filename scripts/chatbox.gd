@@ -44,6 +44,10 @@ func show_message(dialog: Dictionary) -> void:
         if child.modulate.a <= 0.0:
             child.queue_free()
 
+    if has_won and dialog.next_id == 'win_screen':
+        get_tree().change_scene_to_file("res://scenes/end_screen.tscn")
+        return
+
     messages.add_child(message)
     message.add_text(dialog.text, "" if !dialog.has("next_id") else dialog.next_id, true if dialog.has("wait") else false)
 

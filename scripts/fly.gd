@@ -13,7 +13,6 @@ const STATE_LEAVING_FRAME = 6
 @onready var current_state: int = STATE_MOVING
 @onready var current_state_elapsed_time: float = 0.0
 @onready var fly_base_position: Vector3 = fly_model.global_position
-@onready var current_state_duration: float = 2.0
 @onready var fly_goal_position: Vector3 = Vector3(fly_base_position.x + 2.0, fly_base_position.y + 0.3, fly_base_position.z)
 
 # "Motion" was meant to move the fly at the same time as it does other actions, but I'm not going to get that working in time
@@ -102,3 +101,10 @@ func update_state(delta: float):
 func _process(delta: float) -> void:
 	update_state(delta)
 	#update_motion(delta)
+	
+# TODO: After the fly has gone offscreen, call this function to restart the fly's motion
+func reset():
+	fly_model.global_position = Vector3(-3.0, 0.5, 2.0)
+	fly_goal_position = Vector3(fly_base_position.x + 2.0, fly_base_position.y + 0.3, fly_base_position.z)
+	current_state = STATE_MOVING
+	current_state_elapsed_time = 0.0
