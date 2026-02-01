@@ -12,7 +12,7 @@ var using_timer = false
 
 var is_done_intro = false
 var has_won = false
-var time = 20
+var time = 25
 var available_quiz_ids: Array[int] = []
 
 func _ready() -> void:
@@ -79,8 +79,12 @@ func _next_dialog(next_id: String, text: String, skip_final_choice: bool = false
     if text == 'fail':
         suspicion_bar.value += SUSPICION_INCREASE
     else:
-        suspicion_bar.value = max(0, suspicion_bar.value - 5)
+        # suspicion_bar.value = max(0, suspicion_bar.value - 5)
+        pass
 
+    if next_id == 'win':
+        return
+        
     if next_id == 'quiz':
         is_done_intro = true
 
