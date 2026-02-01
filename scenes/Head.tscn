@@ -14,6 +14,7 @@
 [ext_resource type="StyleBox" uid="uid://dcs5hpee25u0w" path="res://assets/red_progress_front.tres" id="8_ca5y4"]
 [ext_resource type="Texture2D" uid="uid://crgfd8pm87o0y" path="res://assets/images/title_text.png" id="13_6e827"]
 [ext_resource type="Texture2D" uid="uid://mrledutl7ejf" path="res://assets/images/title_press_start.png" id="14_qqyuk"]
+[ext_resource type="Texture2D" uid="uid://dmgyd2ayr6yc7" path="res://assets/images/title_text2.png" id="15_qqyuk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ovqku"]
 shader = ExtResource("2_v2egs")
@@ -317,6 +318,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="StartUI/VBoxContainer" unique_id=700192608]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "Skin Suit"
@@ -329,3 +331,8 @@ size_flags_vertical = 3
 [node name="TextureRect" type="TextureRect" parent="StartUI/VBoxContainer" unique_id=309326265]
 layout_mode = 2
 texture = ExtResource("14_qqyuk")
+
+[node name="TitleText2" type="Sprite2D" parent="StartUI/VBoxContainer" unique_id=1326740150]
+position = Vector2(256, 112)
+scale = Vector2(2, 2)
+texture = ExtResource("15_qqyuk")
