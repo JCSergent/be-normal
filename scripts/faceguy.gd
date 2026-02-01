@@ -67,8 +67,6 @@ func _process(delta: float) -> void:
     if blink_buffer and is_right_winking <= 0.0 and is_left_winking <= 0.0:
         blink_buffer = false
         
-    if is_blinking: print("blinking!")
-
     # Move Mouth
     var mouth = Input.get_vector("right_trigger_left", "right_trigger_right", "right_trigger_up", "right_trigger_down")
     face.set_blend_shape_value(4, -1 * mouth.y)
@@ -100,7 +98,6 @@ func _process(delta: float) -> void:
         if prev_head_h.size() == 0 or prev_head_h[0].value < -HEADNOD_THRESHOLD && headshake.x > HEADNOD_THRESHOLD or prev_head_h[0].value > HEADNOD_THRESHOLD && headshake.x < -HEADNOD_THRESHOLD:
             prev_head_h.push_front({"value": headshake.x, "time": curr_time})
             if prev_head_h.size() >= 2:
-                print('head nod horizontal')
                 is_head_nod_h = true
                 prev_head_h.clear()
     elif headnod_h_buffer > 0.0:
@@ -115,7 +112,6 @@ func _process(delta: float) -> void:
         if prev_head_v.size() == 0 or prev_head_v[0].value < -HEADNOD_THRESHOLD && headshake.y > HEADNOD_THRESHOLD or prev_head_v[0].value > HEADNOD_THRESHOLD && headshake.y < -HEADNOD_THRESHOLD:
             prev_head_v.push_front({"value": headshake.y, "time": curr_time})
             if prev_head_v.size() >= 2:
-                print('head nod vertical')
                 is_head_nod_v = true
                 prev_head_v.clear()
     elif headnod_v_buffer > 0.0:
@@ -130,6 +126,17 @@ func _process(delta: float) -> void:
         face.set_blend_shape_value(6, 1.0)
     else:
         face.set_blend_shape_value(6, -1.0)
+
+    var is_ears_out = false
+    var ear_out = 0.0
+    if Input.is_action_pressed("left_ear"):
+        ear_out -= 0.5
+    if Input.is_action_pressed("right_ear"):
+        ear_out -= 0.5
+
+    if ear_out < 0.0: is_ears_out = true
+    face.set_blend_shape_value(12, ear_out)
+
 
     # Calculate Shock
     var is_shocked = 0.0
@@ -146,25 +153,38 @@ func _process(delta: float) -> void:
         if right_bumper and left_bumper: is_disgust += 0.1
 
     var is_suspicious = 0.0
-    if right_bumper or left_bumper and not (right_bumper and left_bumper): is_suspicious += 0.2
-    if headshake.y < 0.5: is_suspicious += 0.1
+    if is_eyebrow_left_raised or is_eyebrow_right_raised and not (is_eyebrow_left_raised and is_eyebrow_right_raised): is_suspicious += 0.15
+    if is_head_down or is_head_up: is_suspicious += 0.1
 
     var is_fear = 0.0
-    if is_mouth_open: is_shocked += 0.1
+    if is_mouth_open: is_fear += 0.1
     if is_frowning:
         is_disgust += 0.1
-        if is_head_up: is_disgust += 0.1
-        if right_bumper and left_bumper: is_disgust += 0.1
-
-    if is_head_up:
-        print('head up')
+        if is_head_up: is_fear += 0.1
+        if right_bumper and left_bumper: is_fear += 0.1
 
     var is_bliss = 0.0
+    if is_frowning: is_bliss -= 0.1
     if is_mouth_open and is_smiling: is_bliss += 0.1
     if right_bumper and left_bumper: is_bliss += 0.1
     if right_bumper and left_bumper: is_bliss += 0.1
     if is_head_up: is_bliss += 0.1
+    is_bliss = max(0, is_bliss)
 
+    var is_angry = 0.0
+    if is_mouth_open and is_frowning: is_angry += 0.1
+    if is_head_down: is_angry += 0.1
+
+    var is_flirty = 0.0
+    if is_smiling:
+        is_flirty += 0.1
+        if right_bumper or left_bumper and not (right_bumper and left_bumper): is_flirty += 0.05
+        if is_head_down: is_flirty += 0.05
+
+    var is_scared = 0.0
+    if is_mouth_open and not is_smiling: is_scared += 0.1
+    if is_eyebrow_left_raised: is_scared += 0.05
+    if is_eyebrow_right_raised: is_scared += 0.05
 
 
     SignalBus.face_state.emit({
@@ -178,5 +198,12 @@ func _process(delta: float) -> void:
         "is_eyebrow_left_raised": is_eyebrow_left_raised,
         "is_shocked": is_shocked,
         "is_disgust": is_disgust,
+        "is_scared": is_scared,
+        "is_bliss": is_bliss,
+        "is_suspicious": is_suspicious,
+        "is_fear": is_fear,
+        "is_flirty": is_flirty,
+        "is_angry": is_angry
+
         # TODO: Add remaining face state
     })
