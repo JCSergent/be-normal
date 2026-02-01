@@ -13,14 +13,14 @@ var is_bad: bool = false
 func _ready() -> void:
     SignalBus.face_state.connect(_on_face_update)
 
-func init(choice: Dictionary) -> void:
+func init(choice: Dictionary, nnext_id: String) -> void:
     if choice.has("is_bad") and choice.is_bad:
         is_bad = true
         progress_bar.visible = false
         bad_progress.visible = true
     choice_text = choice.text
     choice_label.text = choice_text
-    next_id = choice.next_id
+    next_id = nnext_id
     if choice.has("requirements"):
         for requirement in choice.requirements:
             var requirement_dup = requirement.duplicate()
