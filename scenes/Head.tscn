@@ -40,7 +40,7 @@ shader_parameter/noise_time_fac = 4.0
 shader_parameter/enable_color_limitation = true
 shader_parameter/color_levels = 32
 shader_parameter/enable_dithering = true
-shader_parameter/dither_strength = 0.50000002375
+shader_parameter/dither_strength = 0.2000000095
 
 [sub_resource type="QuadMesh" id="QuadMesh_jgqlc"]
 material = SubResource("ShaderMaterial_qtmk6")
