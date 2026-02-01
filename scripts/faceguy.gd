@@ -73,6 +73,9 @@ func _process(delta: float) -> void:
     var mouth = Input.get_vector("right_trigger_left", "right_trigger_right", "right_trigger_up", "right_trigger_down")
     face.set_blend_shape_value(4, -1 * mouth.y)
     face.set_blend_shape_value(5, -1 * mouth.y)
+    face.set_blend_shape_value(10, mouth.x)
+    face.set_blend_shape_value(11, mouth.x)
+    var is_mouth_open = true if mouth.x > 0.5 else false
 
     var is_smiling = false
     if mouth.y < -0.5: is_smiling = true
@@ -85,6 +88,10 @@ func _process(delta: float) -> void:
     face.set_blend_shape_value(8, clampf(1 * headshake.x, 0.0, 1.0))
     face.set_blend_shape_value(9, clampf(-1 * headshake.x, 0.0, 1.0))
 
+    var is_head_up = false
+    if headshake.y < -HEADNOD_THRESHOLD: is_head_up = true
+    var is_head_down = false
+    if headshake.y > HEADNOD_THRESHOLD: is_head_down = true
 
     # Track Head Nod Horizontally
     var is_head_nod_h: bool = false
@@ -126,15 +133,39 @@ func _process(delta: float) -> void:
 
     # Calculate Shock
     var is_shocked = 0.0
-    if is_eyebrow_left_raised: is_shocked += 0.25
-    if is_eyebrow_right_raised: is_shocked += 0.25
+    if is_mouth_open: is_shocked += 0.1
+    if is_eyebrow_left_raised: is_shocked += 0.1
+    if is_eyebrow_right_raised: is_shocked += 0.1
 
     # Calculate Disgust
     var is_disgust = 0.0
+    if is_mouth_open: is_shocked += 0.1
     if is_frowning:
-        is_disgust += 0.25
-        if headshake.y > 0.5: is_disgust += 0.1
+        is_disgust += 0.1
+        if is_head_up: is_disgust += 0.1
         if right_bumper and left_bumper: is_disgust += 0.1
+
+    var is_suspicious = 0.0
+    if right_bumper or left_bumper and not (right_bumper and left_bumper): is_suspicious += 0.2
+    if headshake.y < 0.5: is_suspicious += 0.1
+
+    var is_fear = 0.0
+    if is_mouth_open: is_shocked += 0.1
+    if is_frowning:
+        is_disgust += 0.1
+        if is_head_up: is_disgust += 0.1
+        if right_bumper and left_bumper: is_disgust += 0.1
+
+    if is_head_up:
+        print('head up')
+
+    var is_bliss = 0.0
+    if is_mouth_open and is_smiling: is_bliss += 0.1
+    if right_bumper and left_bumper: is_bliss += 0.1
+    if right_bumper and left_bumper: is_bliss += 0.1
+    if is_head_up: is_bliss += 0.1
+
+
 
     SignalBus.face_state.emit({
         "is_blinking": is_blinking,

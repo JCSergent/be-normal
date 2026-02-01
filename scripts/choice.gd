@@ -4,16 +4,22 @@ extends Control
 @export var choice_text: String
 @onready var choice_label: Label = %ChoiceLabel
 @onready var progress_bar: ProgressBar = %ProgressBar
+@onready var bad_progress: ProgressBar = %BadProgress
 
 var next_id: String
 var requirements: Array = []
+var is_bad: bool = false
 
 func _ready() -> void:
-    choice_label.text = choice_text
     SignalBus.face_state.connect(_on_face_update)
 
 func init(choice: Dictionary) -> void:
+    if choice.has("is_bad") and choice.is_bad:
+        is_bad = true
+        progress_bar.visible = false
+        bad_progress.visible = true
     choice_text = choice.text
+    choice_label.text = choice_text
     next_id = choice.next_id
     if choice.has("requirements"):
         for requirement in choice.requirements:
@@ -27,13 +33,23 @@ func _on_face_update(face_state: Dictionary):
         if typeof(face_action) == TYPE_BOOL and face_action:
             requirement.progress += 1
             if requirement.amount <= requirement.progress:
-                SignalBus.next_dialog.emit(next_id, choice_text)
+                if is_bad:
+                    SignalBus.next_dialog.emit(next_id, 'fail')
+                else:
+                    SignalBus.next_dialog.emit(next_id, choice_text)
         elif typeof(face_action) == TYPE_FLOAT and face_action > 0.0:
             requirement.progress += face_action
             if requirement.amount <= requirement.progress:
-                SignalBus.next_dialog.emit(next_id, choice_text)
+                if is_bad:
+                    SignalBus.next_dialog.emit(next_id, 'fail')
+                else:
+                    SignalBus.next_dialog.emit(next_id, choice_text)
         else:
             if requirement.progress > 0.0:
-                requirement.progress -= 0.01
-        progress_bar.value = requirement.progress / requirement.amount
+                requirement.progress -= 0.015
+
+        if is_bad:
+            bad_progress.value = requirement.progress / requirement.amount
+        else:
+            progress_bar.value = requirement.progress / requirement.amount
     
