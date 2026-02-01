@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://db7xtrdwepf0g"]
 
 [ext_resource type="Script" uid="uid://7n58py26o3bi" path="res://scripts/title_screen.gd" id="1_s4lrb"]
-[ext_resource type="Texture2D" uid="uid://crgfd8pm87o0y" path="res://images/title_text.png" id="1_sa3yf"]
-[ext_resource type="Texture2D" uid="uid://mrledutl7ejf" path="res://images/title_press_start.png" id="2_s4lrb"]
+[ext_resource type="Texture2D" uid="uid://crgfd8pm87o0y" path="res://assets/images/title_text.png" id="2_s4lrb"]
+[ext_resource type="Texture2D" uid="uid://mrledutl7ejf" path="res://assets/images/title_press_start.png" id="3_mgrm8"]
 
 [node name="TitleScreen" type="Control" unique_id=1217799707]
 layout_mode = 3
@@ -16,9 +16,9 @@ script = ExtResource("1_s4lrb")
 [node name="TitleText" type="Sprite2D" parent="." unique_id=1748781060]
 position = Vector2(568, 224)
 scale = Vector2(2, 2)
-texture = ExtResource("1_sa3yf")
+texture = ExtResource("2_s4lrb")
 
 [node name="TitlePressStartText" type="Sprite2D" parent="." unique_id=1680917144]
 position = Vector2(584, 392)
 scale = Vector2(2, 2)
-texture = ExtResource("2_s4lrb")
+texture = ExtResource("3_mgrm8")
