@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dmh0g1te51fhs" path="res://scripts/end_screen.gd" id="1_6e1uj"]
 [ext_resource type="Texture2D" uid="uid://bs01tg3vliye2" path="res://assets/images/game_over_text.png" id="1_kq7ac"]
+[ext_resource type="Texture2D" uid="uid://ye48kjluur3a" path="res://assets/images/title_background.png" id="3_jc7ji"]
 
 [node name="EndScreen" type="Control" unique_id=607470978]
 layout_mode = 3
@@ -13,6 +14,47 @@ grow_vertical = 2
 script = ExtResource("1_6e1uj")
 
 [node name="GameOverText" type="Sprite2D" parent="." unique_id=590219823]
-position = Vector2(552, 320)
-scale = Vector2(1.5, 1.5)
+position = Vector2(552, 128)
+scale = Vector2(2, 2)
 texture = ExtResource("1_kq7ac")
+
+[node name="TitleBackground" type="Sprite2D" parent="." unique_id=713414571]
+z_index = -1
+position = Vector2(576, 328)
+texture = ExtResource("3_jc7ji")
+
+[node name="Credit1" type="Label" parent="." unique_id=111190309]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 368.0
+offset_right = 1848.0
+offset_bottom = 417.0
+text = "This work is based on \"Fly\" (https://sketchfab.com/3d-models/fly-6a4470f884554864827d848718b2b6bc)
+by victorberdugo1 (https://sketchfab.com/victorberdugo1) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)"
+
+[node name="Credit2" type="Label" parent="." unique_id=359152266]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 432.0
+offset_right = 1848.0
+offset_bottom = 481.0
+text = "This work is based on \"Tree Animate\" (https://sketchfab.com/3d-models/tree-animate-f0f9eb5e6c104bbb8e1f41c97019e6f2)
+by RandyGF (https://sketchfab.com/RandyGF) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)"
+
+[node name="Credit3" type="Label" parent="." unique_id=116593741]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 496.0
+offset_right = 1848.0
+offset_bottom = 545.0
+text = "This work is based on \"Road / Highway\" (https://sketchfab.com/3d-models/road-highway-ffd36f67b0c8476eac5788244158394c)
+by ROY (https://sketchfab.com/roy.gearloft.in) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)"
+
+[node name="Credit4" type="Label" parent="." unique_id=258848904]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 560.0
+offset_right = 1848.0
+offset_bottom = 609.0
+text = "This work is based on \"Old Flashlight 2.0\" (https://sketchfab.com/3d-models/old-flashlight-20-cef481bb820a4863b6d31c8db9f6df07)
+by Blender3D (https://sketchfab.com/Blender3D) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)"
