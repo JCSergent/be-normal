@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://rlj2gn7g5rjo" path="res://scripts/choice.gd" id="1_ycxmd"]
 [ext_resource type="StyleBox" uid="uid://bbyypehsls41w" path="res://assets/option_stylebox.tres" id="2_yhyp7"]
+[ext_resource type="StyleBox" uid="uid://dcs5hpee25u0w" path="res://assets/red_progress_front.tres" id="3_8qvna"]
+[ext_resource type="StyleBox" uid="uid://p0wgocg7kqx2" path="res://assets/gray_progress_back.tres" id="3_jt4bu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhyp7"]
 bg_color = Color(0.12194226, 0.92450684, 0.09987583, 0.7882353)
@@ -32,6 +34,16 @@ theme_override_styles/background = ExtResource("2_yhyp7")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yhyp7")
 max_value = 1.0
 value = 1.0
+show_percentage = false
+
+[node name="BadProgress" type="ProgressBar" parent="." unique_id=168672052]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = ExtResource("3_jt4bu")
+theme_override_styles/fill = ExtResource("3_8qvna")
+max_value = 1.0
 show_percentage = false
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=623410592]

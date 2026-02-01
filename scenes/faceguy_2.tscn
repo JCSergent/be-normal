@@ -11,3 +11,6 @@ visible = false
 
 [node name="alguien_nuevo-male_generic" parent="alguien_nuevo/Skeleton3D" parent_id_path=PackedInt32Array(1666501892) index="1" unique_id=2044355762]
 unique_name_in_owner = true
+blend_shapes/l_mouth_raise = 1.0
+blend_shapes/r_mouth_raise = 1.0
+blend_shapes/MouthOpen = 1.0

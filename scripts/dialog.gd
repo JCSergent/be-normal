@@ -3,10 +3,19 @@ extends Node
 
 const DIALOGUE_DATA = {
     # Each conversation entry is managed as Dictionary with unique ID as key
+    "intro_1": {
+        "wait": 2,
+        "text": "An stranger approaches you in the woods...",
+        "next_id": "intro_2"
+    },
+    "intro_2": {
+        "wait": 2,
+        "text": "Stay calm... Be normal...",
+        "next_id": "chat_1"
+    },
     "chat_1": {
-        "speaker": "Officer Bartley",
-        "text": "Blink, so I know you're alive.",
-        "time": 10.0,
+        "text": "Whats with you... can't take a flashlight to the face? Blink it off, won't you.",
+        "time": -1,
         "choices": [
             {
                 "text": "Blink...",
@@ -18,36 +27,22 @@ const DIALOGUE_DATA = {
         ]
     },
     "chat_2": {
-        "text": "Are you okay, son?",
-        "time": 10.0,
+        "text": "There you go, you'll be fine. Feel better?",
+        "time": -1,
         "choices": [
             {
                 "text": "Nod Yes...",
-                "next_id": "chat_4",
+                "next_id": "chat_3",
                 "requirements": [
                     { "face_state": "is_head_nod_v", "amount": 3 }
                 ]
             },
-            {
-                "text": "Nod No...",
-                "next_id": "chat_4",
-                "requirements": [
-                    { "face_state": "is_head_nod_h", "amount": 3 }
-                ]
-            }
         ]
     },
     "chat_3": {
-        "text": "Are you hurt?",
-        "time": 10.0,
+        "text": "What are you doing out here? Haven't you heard what's going on?",
+        "time": -1,
         "choices": [
-            {
-                "text": "Nod Yes...",
-                "next_id": "chat_4",
-                "requirements": [
-                    { "face_state": "is_head_nod_v", "amount": 3 }
-                ]
-            },
             {
                 "text": "Nod No...",
                 "next_id": "chat_4",
@@ -58,53 +53,59 @@ const DIALOGUE_DATA = {
         ]
     },
     "chat_4": {
-        "text": "Smile for me, hot stuff.",
-        "time": 10.0,
-        "choices": [
-            {
-                "text": "Smile...",
-                "next_id": "chat_5",
-                "requirements": [
-                    { "face_state": "is_smiling", "amount": 30 }
-                ]
-            }
-        ]
-    },
-    "chat_5": {
-        "text": "Now frown.",
-        "time": 10.0,
+        "text": "These are dark times, I hate to be the one to tell you.",
+        "time": -1,
         "choices": [
             {
                 "text": "Frown...",
-                "next_id": "chat_6",
+                "next_id": "chat_5",
                 "requirements": [
                     { "face_state": "is_frowning", "amount": 30 }
                 ]
             }
         ]
     },
+    "chat_5": {
+        "text": "Some kids have gone missing, in these very woods.",
+        "time": -1,
+        "choices": [
+            {
+                "text": "Smile...",
+                "is_bad": true,
+                "next_id": "intro_3",
+                "requirements": [
+                    { "face_state": "is_smiling", "amount": 30 }
+                ]
+            }
+        ]
+    },
+    "intro_3": {
+        "wait": 2,
+        "text": "The stranger didn't like that reaction.",
+        "next_id": "chat_6"
+    },
     "chat_6": {
-        "text": "There's been a dead body found out here",
-        "time": 10.0,
+        "text": "Did you hear me, son... We're losing children out here!",
+        "time": -1,
         "choices": [
             {
                 "text": "Look Shocked...",
                 "next_id": "chat_7",
                 "requirements": [
-                    { "face_state": "is_shocked", "amount": 30 }
+                    { "face_state": "is_shocked", "amount": 60 }
                 ]
             }
         ]
     },
     "chat_7": {
-        "text": "Do you like death?",
-        "time": 10.0,
+        "text": "Here we go",
+        "time": -1,
         "choices": [
             {
                 "text": "Look Disgusted...",
                 "next_id": "chat_3",
                 "requirements": [
-                    { "face_state": "is_disgust", "amount": 30 }
+                    { "face_state": "is_disgust", "amount": 60 }
                 ]
             }
         ]
