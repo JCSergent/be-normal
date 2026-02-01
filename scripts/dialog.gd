@@ -87,7 +87,7 @@ const INTRO = {
     "chat_6": {
         "text": "Did you hear me, son... We're losing children out here!",
         "time": -1,
-        "next_id": "chat_7",
+        "next_id": "chat_8",
         "choices": [
             {
                 "text": "Look Shocked...",
@@ -97,19 +97,26 @@ const INTRO = {
             }
         ]
     },
-    "chat_7": {
-        "text": "You wouldn't know anything about that, would you?",
-        "time": -1,
-        "next_id": "chat_8",
-        "choices": [
-            {
-                "text": "Look Disgusted...",
-                "requirements": [
-                    { "face_state": "is_disgust", "amount": 60 }
-                ]
-            }
-        ]
-    },
+    # "chat_7": {
+    #     "text": "You wouldn't know anything about that, would you?",
+    #     "time": -1,
+    #     "next_id": "chat_8",
+    #     "choices": [
+    #         {
+    #             "text": "Nod Yes...",
+    #             "is_bad": true,
+    #             "requirements": [
+    #                 { "face_state": "is_head_nod_v", "amount": 3 }
+    #             ]
+    #         },
+    #         {
+    #             "text": "Nod No...",
+    #             "requirements": [
+    #                 { "face_state": "is_head_nod_h", "amount": 3 }
+    #             ]
+    #         },
+    #     ]
+    # },
     "chat_8": {
         "text": "These disappearances are no accident either, the mayor says evil work is at play.",
         "time": -1,
@@ -124,9 +131,28 @@ const INTRO = {
         ]
     },
     "chat_9": {
-        "text": "I'm going to have to test you now, son. Prove your good intentioned, you ready?",
+        "text": "I'm going to have to test you now, for only the guilty crack under pressure.",
         "time": -1,
         "next_id": "intro_4",
+        "choices": [
+            {
+                "text": "Get Angry...",
+                "is_bad": true,
+                "requirements": [
+                    { "face_state": "is_angry", "amount": 60 }
+                ]
+            }
+        ]
+    },
+    "intro_4": {
+        "wait": 4,
+        "text": "Calm yourself... Just answer his questions, and you'll be free...",
+        "next_id": "chat_10"
+    },
+    "chat_10": {
+        "text": "You ready?",
+        "time": -1,
+        "next_id": "quiz",
         "choices": [
             {
                 "text": "Nod Yes...",
@@ -135,11 +161,6 @@ const INTRO = {
                 ]
             }
         ]
-    },
-    "intro_4": {
-        "wait": 2,
-        "text": "I better react quick. His patience seems short.",
-        "next_id": "quiz"
     },
     # ... other dialogue data
     "win_0": {
@@ -194,10 +215,10 @@ const QUIZ = [
         ]
     },
     {
-        "text": "Imagine a happy place.",
+        "text": "imagine a happy place.",
         "choices": [
             {
-                "text": "Look Blissful...",
+                "text": "look blissful...",
                 "requirements": [
                     { "face_state": "is_bliss", "amount": 60 }
                 ]
@@ -216,7 +237,7 @@ const QUIZ = [
         ]
     },
     {
-        "text": "The love of your life approaches you... Tell them how you feel.",
+        "text": "The love of your life approaches you... Show them how you feel.",
         "choices": [
             {
                 "text": "Get flirty...",
