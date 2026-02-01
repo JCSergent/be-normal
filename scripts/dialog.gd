@@ -5,7 +5,8 @@ const DIALOGUE_DATA = {
     # Each conversation entry is managed as Dictionary with unique ID as key
     "chat_1": {
         "speaker": "Officer Bartley",
-        "text": "Blink, so I know your alive.",
+        "text": "Blink, so I know you're alive.",
+        "time": 10.0,
         "choices": [
             {
                 "text": "Blink...",
@@ -18,6 +19,7 @@ const DIALOGUE_DATA = {
     },
     "chat_2": {
         "text": "Are you okay, son?",
+        "time": 10.0,
         "choices": [
             {
                 "text": "Nod Yes...",
@@ -37,6 +39,7 @@ const DIALOGUE_DATA = {
     },
     "chat_3": {
         "text": "Are you hurt?",
+        "time": 10.0,
         "choices": [
             {
                 "text": "Nod Yes...",
@@ -56,6 +59,7 @@ const DIALOGUE_DATA = {
     },
     "chat_4": {
         "text": "Smile for me, hot stuff.",
+        "time": 10.0,
         "choices": [
             {
                 "text": "Smile...",
@@ -68,6 +72,7 @@ const DIALOGUE_DATA = {
     },
     "chat_5": {
         "text": "Now frown.",
+        "time": 10.0,
         "choices": [
             {
                 "text": "Frown...",
@@ -80,6 +85,7 @@ const DIALOGUE_DATA = {
     },
     "chat_6": {
         "text": "There's been a dead body found out here",
+        "time": 10.0,
         "choices": [
             {
                 "text": "Look Shocked...",
@@ -92,6 +98,7 @@ const DIALOGUE_DATA = {
     },
     "chat_7": {
         "text": "Do you like death?",
+        "time": 10.0,
         "choices": [
             {
                 "text": "Look Disgusted...",

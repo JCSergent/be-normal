@@ -1,13 +1,20 @@
 [gd_scene format=3 uid="uid://e5jijhyoto3v"]
 
 [ext_resource type="Script" uid="uid://rlj2gn7g5rjo" path="res://scripts/choice.gd" id="1_ycxmd"]
+[ext_resource type="StyleBox" uid="uid://bbyypehsls41w" path="res://assets/option_stylebox.tres" id="2_yhyp7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pffde"]
-bg_color = Color(0.5064444, 0.9999998, 0.5031007, 0.8352941)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhyp7"]
+bg_color = Color(0.12194226, 0.92450684, 0.09987583, 0.7882353)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.09019608, 0.6156863, 0.07450981, 0.7882353)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 4
 
 [node name="PanelContainer" type="PanelContainer" unique_id=1491600633]
 size_flags_horizontal = 3
@@ -15,7 +22,17 @@ script = ExtResource("1_ycxmd")
 
 [node name="Panel" type="Panel" parent="." unique_id=1515147106]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_pffde")
+theme_override_styles/panel = ExtResource("2_yhyp7")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=833599634]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = ExtResource("2_yhyp7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_yhyp7")
+max_value = 1.0
+value = 1.0
+show_percentage = false
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=623410592]
 layout_mode = 2
@@ -28,15 +45,6 @@ theme_override_constants/margin_bottom = 8
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
 text = "Yes..."
 autowrap_mode = 2
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=597775753]
-visible = false
-layout_mode = 2
-
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=833599634]
-visible = false
-layout_mode = 2
-value = 50.0
-show_percentage = false

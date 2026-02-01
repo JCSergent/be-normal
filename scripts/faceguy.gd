@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var face: MeshInstance3D = %"alguien_nuevo-male_generic"
+@onready var suspicionBar: ProgressBar = %SuspicionBar
 
 var curr_time: float = 0.0;
 
@@ -125,24 +126,22 @@ func _process(delta: float) -> void:
 
     # Calculate Shock
     var is_shocked = 0.0
-    if is_eyebrow_left_raised: is_shocked += 0.5
-    if is_eyebrow_right_raised: is_shocked += 0.5
-
+    if is_eyebrow_left_raised: is_shocked += 0.25
+    if is_eyebrow_right_raised: is_shocked += 0.25
 
     # Calculate Disgust
     var is_disgust = 0.0
     if is_frowning:
-        is_disgust += 0.5
-        if headshake.y > 0.5: is_disgust += 0.25
-        if right_bumper and left_bumper: is_disgust += 0.25
-
+        is_disgust += 0.25
+        if headshake.y > 0.5: is_disgust += 0.1
+        if right_bumper and left_bumper: is_disgust += 0.1
 
     SignalBus.face_state.emit({
         "is_blinking": is_blinking,
         "is_head_nod_h": is_head_nod_h,
         "is_head_nod_v": is_head_nod_v,
-        "is_smiling": is_smiling,
-        "is_frowning": is_frowning,
+        "is_smiling": 0.3 if is_smiling else 0.0,
+        "is_frowning": 0.3 if is_frowning else 0.0,
         "is_nostrils_flared": is_nostrils_flared,
         "is_eyebrow_right_raised": is_eyebrow_right_raised,
         "is_eyebrow_left_raised": is_eyebrow_left_raised,
