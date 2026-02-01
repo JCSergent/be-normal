@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://donudmsgc6jnc"]
+
+[ext_resource type="PackedScene" uid="uid://c0c73tg7m0xvp" path="res://assets/fly/fly_rescaled.gltf" id="1_djddo"]
+[ext_resource type="Script" uid="uid://dowdwn8vpgiy2" path="res://scripts/fly.gd" id="1_xr3pu"]
+
+[node name="Fly" type="Node3D" unique_id=1549562784]
+script = ExtResource("1_xr3pu")
+
+[node name="fly_rescaled" parent="." unique_id=1746792802 instance=ExtResource("1_djddo")]
+transform = Transform3D(-0.2, -3.019916e-08, -1.3200473e-15, 0, -8.742278e-09, 0.2, -3.019916e-08, 0.2, 8.742278e-09, -3, 0.5, 2)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1530931786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.097, 16.685)
+fov = 10.0

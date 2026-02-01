@@ -7,9 +7,11 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.584704, 0)
 script = ExtResource("2_x82vr")
 
-[node name="Skeleton3D" parent="alguien_nuevo" parent_id_path=PackedInt32Array(582708542) index="0" unique_id=1279088737]
+[node name="Skeleton3D" parent="alguien_nuevo" parent_id_path=PackedInt32Array(39068707) index="0" unique_id=153479417]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.712213)
 
-[node name="alguien_nuevo-male_generic" parent="alguien_nuevo/Skeleton3D" index="0" unique_id=621300876]
+[node name="alguien_nuevo-male_generic" parent="alguien_nuevo/Skeleton3D" index="0" unique_id=834356527]
 unique_name_in_owner = true
-blend_shapes/head_shake_right = -0.09464
+
+[node name="NoseMarker" type="Marker3D" parent="." index="1" unique_id=2075772987]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0765877, 1.7707647)
