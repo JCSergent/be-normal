@@ -66,8 +66,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.097, 16.685)
 fov = 10.0
 
 [node name="Chatbox" type="HBoxContainer" parent="." unique_id=37296964]
-offset_right = 1152.0
-offset_bottom = 649.0
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -183.0
+grow_horizontal = 0
+grow_vertical = 2
 alignment = 2
 script = ExtResource("3_ovqku")
 
