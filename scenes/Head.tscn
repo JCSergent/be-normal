@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://mrledutl7ejf" path="res://assets/images/title_press_start.png" id="14_qqyuk"]
 [ext_resource type="Texture2D" uid="uid://dlajk4yv01j67" path="res://assets/images/title_text2.png" id="15_qqyuk"]
 [ext_resource type="AudioStream" uid="uid://7mgnqfruwetu" path="res://assets/facemusic.mp3" id="16_l6lsl"]
+[ext_resource type="PackedScene" uid="uid://c0c73tg7m0xvp" path="res://assets/fly/fly_rescaled.gltf" id="16_rb3ip"]
 
 [sub_resource type="Sky" id="Sky_v2egs"]
 
@@ -323,3 +324,9 @@ texture = ExtResource("15_qqyuk")
 stream = ExtResource("16_l6lsl")
 autoplay = true
 parameters/looping = false
+
+[node name="fly_rescaled" parent="." unique_id=1746792802 instance=ExtResource("16_rb3ip")]
+transform = Transform3D(-0.2, 1.7484556e-08, 7.642742e-16, 0, -8.742278e-09, 0.2, 1.7484556e-08, 0.2, 8.742278e-09, -3, 0.5, 2)
+
+[node name="NoseMarker" type="Marker3D" parent="." unique_id=455779633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.0238676, 1.771)
